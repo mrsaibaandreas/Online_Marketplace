@@ -34,9 +34,9 @@
             <Image url="@OM-Image.png" />
          </image>
       </ImageView>
-      <ImageView  fitHeight="150.0" fitWidth="152.0" layoutX="198.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="152.0" layoutX="198.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@OM-Image.png" />
+            <Image url="@OM-Text.png" />
          </image>
       </ImageView>
       <Button layoutX="177.0" layoutY="178.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="193.0" text="Register" />

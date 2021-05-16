@@ -8,7 +8,8 @@ public class MainController {
     @FXML
     private Button b_register;
 
-    @FXML Button b_login;
+    @FXML
+    private Button b_login;
 
     public void handler_register(ActionEvent action)
     {

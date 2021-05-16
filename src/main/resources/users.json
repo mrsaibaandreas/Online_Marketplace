@@ -1,0 +1,9 @@
+[ {
+  "user_name" : "Lokesh",
+  "password" : "Gupta",
+  "f_type" : "howtodoinjava.com"
+}, {
+  "user_name" : "Brian",
+  "password" : "Schultz",
+  "f_type" : "example.com"
+} ]
