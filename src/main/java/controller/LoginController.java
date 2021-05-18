@@ -77,6 +77,8 @@ public class LoginController {
     }
 
     public void loginButtonAction(javafx.event.ActionEvent actionEvent) throws IOException{
+        System.out.println(writeUsername.getText().toString()+" "+writePassword.getText().toString());
+        System.out.println(userService.encodePassword(writeUsername.getText(), writePassword.getText())+"\n"+ writePassword.getText().toString()+"\n\n");
         if( userService.Login(writeUsername.getText(),writePassword.getText())) {
             Parent NewCustomer = FXMLLoader.load(getClass().getResource("/LoggedINCUSTOMER.fxml"));
             Scene NewCustomerScene = new Scene(NewCustomer);

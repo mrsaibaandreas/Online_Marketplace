@@ -79,6 +79,7 @@ public class userService {
                     JSONObject obj_user = new JSONObject();
 
                     obj_user.put("user_name", ex_user.user_name);
+                    System.out.println("DATA\n" + ex_user.user_name +"\n" +ex_user.password + "\n");
                     ex_user.password = encodePassword(ex_user.user_name, ex_user.password);
                     obj_user.put("password", ex_user.password);
                     obj_user.put("f_type", "user");
@@ -100,14 +101,14 @@ public class userService {
     }
 
     public static boolean checkUserExistence(String username) {
-        System.out.println(users);
         for (User user : users)
-            if (user.user_name.equals(username))
+            if (user.user_name.equals(username)) {
                 return false;
+            }
         return true;
     }
 
-    private static String encodePassword(String salt, String password) {
+    public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 
@@ -115,7 +116,7 @@ public class userService {
 
         // This is the way a password should be encoded when checking the credentials
         return new String(hashedPassword, StandardCharsets.UTF_8)
-                .replace("\"", ""); //to be able to save in JSON format
+                 .replace("\"", ""); //to be able to save in JSON format
     }
 
     private static MessageDigest getMessageDigest() {
@@ -128,6 +129,19 @@ public class userService {
         return md;
     }
 
+    private static boolean checkPass(User user, String user_name, String pass) {
+
+        pass = encodePassword(user_name, pass);
+        System.out.println(user.password);
+        if(pass.equals(user.password)) {
+            System.out.println();
+            System.out.println("yee");
+            return true;
+        }
+
+            return false;
+    }
+
     public static boolean Login(String user_name, String password) {
         if (checkUserExistence(user_name)) {
             System.out.println("User does not exists");
@@ -135,8 +149,7 @@ public class userService {
         }
         for (User user : users) {
             if (user.user_name.equals(user_name)) {
-                if (user.password.equals(userService.encodePassword(user_name, password))) {
-                    //set flag logged
+                if (checkPass(user, user_name, password)) {
                     System.out.println("Log user");
                     return true;
                 } else {

@@ -4,6 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import services.userService;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -16,6 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         try {
 //            Parent root = FXMLLoader.load(getClass().getResource("welcomePage.fxml"));
+            userService.loadUsersFromFile();
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("welcomePage.fxml"));
             primaryStage.setTitle("Online Market Place");
             primaryStage.setScene(new Scene(root));
