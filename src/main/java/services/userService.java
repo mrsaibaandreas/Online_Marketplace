@@ -128,21 +128,24 @@ public class userService {
         return md;
     }
 
-    public static void Login(String user_name, String password) {
-        if (!checkUserExistence(user_name)) {
+    public static boolean Login(String user_name, String password) {
+        if (checkUserExistence(user_name)) {
             System.out.println("User does not exists");
-            return;
+            return false;
         }
         for (User user : users) {
             if (user.user_name.equals(user_name)) {
                 if (user.password.equals(userService.encodePassword(user_name, password))) {
                     //set flag logged
                     System.out.println("Log user");
+                    return true;
                 } else {
                     System.out.println("Wrong password!");
+                    return false;
                 }
             }
         }
+        return false;
 
     }
 }

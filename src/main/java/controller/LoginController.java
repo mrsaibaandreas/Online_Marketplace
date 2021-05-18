@@ -11,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import services.userService;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -75,7 +76,21 @@ public class LoginController {
     public void writeUsernameAction(javafx.event.ActionEvent actionEvent) {
     }
 
-    public void loginButtonAction(javafx.event.ActionEvent actionEvent) {
+    public void loginButtonAction(javafx.event.ActionEvent actionEvent) throws IOException{
+        if( userService.Login(writeUsername.getText(),writePassword.getText())) {
+            Parent NewCustomer = FXMLLoader.load(getClass().getResource("/LoggedINCUSTOMER.fxml"));
+            Scene NewCustomerScene = new Scene(NewCustomer);
+
+            //Here we get the stage information
+            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            window.setScene(NewCustomerScene);
+            window.show();
+        }
+        else
+        {
+            System.out.println("tzaca");
+        }
     }
 }
 

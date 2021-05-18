@@ -47,7 +47,15 @@ public class customerPageController {
 
     }
 
-    public void registerButtonAction(javafx.event.ActionEvent actionEvent) {
+    public void registerButtonAction(javafx.event.ActionEvent actionEvent) throws IOException{
+        Parent NewCustomer = FXMLLoader.load(getClass().getResource("/register.fxml"));
+        Scene NewCustomerScene = new Scene(NewCustomer);
+
+        //Here we get the stage information
+        Stage window=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(NewCustomerScene);
+        window.show();
     }
 
     public void loginButtonAction(javafx.event.ActionEvent actionEvent)  throws IOException {
