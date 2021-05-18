@@ -16,7 +16,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         try {
 //            Parent root = FXMLLoader.load(getClass().getResource("welcomePage.fxml"));
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("LoggedINCUSTOMER.fxml"));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("welcomePage.fxml"));
             primaryStage.setTitle("Online Market Place");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();

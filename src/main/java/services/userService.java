@@ -67,12 +67,12 @@ public class userService {
     }
 
 
-    public static void addNewUser(User user) throws IOException {
+    public static boolean addNewUser(User user) throws IOException {
         if (checkUserExistence(user.user_name))
             users.add(user);
         else {
             System.out.println("User already exists");
-            return;
+            return false;
         }
         JSONArray user_list = new JSONArray();
         users.forEach(ex_user -> {
@@ -91,9 +91,11 @@ public class userService {
             //We can write any JSONArray or JSONObject instance to the file
             file.write(user_list.toJSONString());
             file.flush();
+            return true;
 
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -126,21 +128,24 @@ public class userService {
         return md;
     }
 
-    public static void Login(String user_name, String password) {
-        if (!checkUserExistence(user_name)) {
+    public static boolean Login(String user_name, String password) {
+        if (checkUserExistence(user_name)) {
             System.out.println("User does not exists");
-            return;
+            return false;
         }
         for (User user : users) {
             if (user.user_name.equals(user_name)) {
                 if (user.password.equals(userService.encodePassword(user_name, password))) {
                     //set flag logged
                     System.out.println("Log user");
+                    return true;
                 } else {
                     System.out.println("Wrong password!");
+                    return false;
                 }
             }
         }
+        return false;
 
     }
 }
