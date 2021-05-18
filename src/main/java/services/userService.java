@@ -6,14 +6,16 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class userService {
     private static ArrayList<User> users = new ArrayList<User>();
@@ -63,14 +65,18 @@ public class userService {
 
 
     public static void addNewUser(User user) throws IOException {
-        if (!checkUserExistence(user.user_name))
+        if (checkUserExistence(user.user_name))
             users.add(user);
-
+        else {
+            System.out.println("User already exists");
+            return;
+        }
         JSONArray user_list = new JSONArray();
         users.forEach(ex_user -> {
                     JSONObject obj_user = new JSONObject();
 
                     obj_user.put("user_name", ex_user.user_name);
+                    ex_user.password = encodePassword(ex_user.user_name, ex_user.password);
                     obj_user.put("password", ex_user.password);
                     obj_user.put("f_type", "user");
 
@@ -89,10 +95,30 @@ public class userService {
     }
 
     public static boolean checkUserExistence(String username) {
+        System.out.println(users);
         for (User user : users)
-            if (!user.user_name.equals(username))
+            if (user.user_name.equals(username))
                 return false;
         return true;
     }
-    public static
+    private static String encodePassword(String salt, String password) {
+        MessageDigest md = getMessageDigest();
+        md.update(salt.getBytes(StandardCharsets.UTF_8));
+
+        byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
+
+        // This is the way a password should be encoded when checking the credentials
+        return new String(hashedPassword, StandardCharsets.UTF_8)
+                .replace("\"", ""); //to be able to save in JSON format
+    }
+
+    private static MessageDigest getMessageDigest() {
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("SHA-512");
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException("SHA-512 does not exist!");
+        }
+        return md;
+    }
 }

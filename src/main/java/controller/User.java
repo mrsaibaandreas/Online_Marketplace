@@ -32,7 +32,7 @@ public class User {
             return false;
 
         User obj = (User) user;
-
+        System.out.println(((User) user).user_name+" " + this.user_name);
         if (!user_name.equals(obj.user_name))
             return false;
         if (!password.equals(obj.password))
