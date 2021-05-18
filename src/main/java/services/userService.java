@@ -36,7 +36,7 @@ public class userService {
             }
 
         } else {
-           JSONParser parser = new JSONParser();
+            JSONParser parser = new JSONParser();
 
             try (FileReader reader = new FileReader("src/main/resources/users.json")) {
                 //Read JSON file
@@ -104,6 +104,7 @@ public class userService {
                 return false;
         return true;
     }
+
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
@@ -123,5 +124,23 @@ public class userService {
             throw new IllegalStateException("SHA-512 does not exist!");
         }
         return md;
+    }
+
+    public static void Login(String user_name, String password) {
+        if (!checkUserExistence(user_name)) {
+            System.out.println("User does not exists");
+            return;
+        }
+        for (User user : users) {
+            if (user.user_name.equals(user_name)) {
+                if (user.password.equals(userService.encodePassword(user_name, password))) {
+                    //set flag logged
+                    System.out.println("Log user");
+                } else {
+                    System.out.println("Wrong password!");
+                }
+            }
+        }
+
     }
 }
