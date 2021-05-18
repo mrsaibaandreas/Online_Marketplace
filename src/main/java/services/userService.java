@@ -67,12 +67,12 @@ public class userService {
     }
 
 
-    public static void addNewUser(User user) throws IOException {
+    public static boolean addNewUser(User user) throws IOException {
         if (checkUserExistence(user.user_name))
             users.add(user);
         else {
             System.out.println("User already exists");
-            return;
+            return false;
         }
         JSONArray user_list = new JSONArray();
         users.forEach(ex_user -> {
@@ -91,9 +91,11 @@ public class userService {
             //We can write any JSONArray or JSONObject instance to the file
             file.write(user_list.toJSONString());
             file.flush();
+            return true;
 
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

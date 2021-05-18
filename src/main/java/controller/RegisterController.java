@@ -29,18 +29,18 @@ public class RegisterController {
     Button reg_button;
 
     @FXML
-    public void handleClick(ActionEvent event) throws IOException {
+    public boolean handleClick(ActionEvent event) throws IOException {
 
     try{
         User test = new User(user_name.getText(),pass1.getText(),"user");
         userService.loadUsersFromFile();
         System.out.println("test"+test);
-        userService.addNewUser(new User(user_name.getText(),pass1.getText(),"user"));
-
+        return userService.addNewUser(new User(user_name.getText(), pass1.getText(), "user"));
     }
     catch(Exception e)
     {
         e.printStackTrace();
+        return false;
     }
 
     }
