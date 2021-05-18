@@ -1,9 +1,5 @@
 [ {
-  "user_name" : "Lokesh",
-  "password" : "Gupta",
-  "f_type" : "howtodoinjava.com"
-}, {
-  "user_name" : "Brian",
-  "password" : "Schultz",
-  "f_type" : "example.com"
+  "user_name" : "sa",
+  "password" : "fdjs",
+  "f_type" : "user"
 } ]

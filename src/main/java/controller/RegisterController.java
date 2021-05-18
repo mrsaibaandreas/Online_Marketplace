@@ -34,12 +34,8 @@ public class RegisterController {
 
     try{
         User test = new User(user_name.getText(),pass1.getText(),"user");
-        System.out.println(test);
-        userService.loadUsersFromFile();
-        System.out.println(System.getProperty("user.dir"));
-        System.out.println(System.getProperty("user.home"));
-        System.out.println(test);
-        userService.addNewUser(new User(user_name.getText(),pass1.getText(),"user"));
+//        userService.addNewUser(new User(user_name.getText(),pass1.getText(),"user"));
+        userService.addNewUser(test);
     }
     catch(Exception e)
     {
