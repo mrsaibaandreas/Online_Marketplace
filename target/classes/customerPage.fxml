@@ -6,21 +6,26 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="384.0" prefWidth="554.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customerPageController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="311.0" prefWidth="554.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customerPageController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="152.0" layoutX="451.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="backgroundImage" fitHeight="384.0" fitWidth="554.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@welcomepage-IMAGE.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="152.0" layoutX="444.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@OM-Image.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="152.0" layoutX="199.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="152.0" layoutX="203.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@OM-Text.png" />
          </image>
       </ImageView>
-      <Button fx:id="registerButton" layoutX="181.0" layoutY="179.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="24.0" prefWidth="193.0" text="Register" />
-      <Button fx:id="loginButton" layoutX="181.0" layoutY="213.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="24.0" prefWidth="193.0" text="Login" />
-      <Button fx:id="goBackButton" layoutX="188.0" layoutY="318.0" mnemonicParsing="false" onAction="#goBackButtonAction" prefHeight="27.0" prefWidth="179.0" text="Go back to Welcome Page !">
+      <Button fx:id="registerButton" layoutX="181.0" layoutY="143.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="24.0" prefWidth="193.0" text="Register" />
+      <Button fx:id="loginButton" layoutX="181.0" layoutY="192.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="24.0" prefWidth="193.0" text="Login" />
+      <Button fx:id="goBackButton" layoutX="188.0" layoutY="274.0" mnemonicParsing="false" onAction="#goBackButtonAction" prefHeight="27.0" prefWidth="179.0" text="Go back to Welcome Page !">
          <font>
             <Font size="13.0" />
          </font>

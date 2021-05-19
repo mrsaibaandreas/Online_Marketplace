@@ -46,6 +46,8 @@ public class welcomePageController {
     @FXML
     void supplierButtonAction(ActionEvent event){
     }
+    @FXML
+    private ImageView welcomeIMAGEbackground;
 
     public void customerButtonAction(javafx.event.ActionEvent actionEvent)  throws IOException {
         Parent NewCustomer = FXMLLoader.load(getClass().getResource("/customerPage.fxml"));

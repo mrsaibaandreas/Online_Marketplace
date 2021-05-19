@@ -38,8 +38,10 @@ public class LoggedINCUSTOMER {
 
     @FXML
     void viewProductsButtonAction(ActionEvent event) {
-
     }
+    @FXML
+    private Button logoutButton;
+
 
     public void viewProductsButtonAction(javafx.event.ActionEvent actionEvent) throws IOException{
         Parent NewCustomer = FXMLLoader.load(getClass().getResource("/viewActiveProducts.fxml"));
@@ -63,6 +65,25 @@ public class LoggedINCUSTOMER {
         window.show();
     }
 
-    public void viewActiveOrdersButtonAction(javafx.event.ActionEvent actionEvent) {
+    public void viewActiveOrdersButtonAction(javafx.event.ActionEvent actionEvent) throws IOException{
+        Parent NewCustomer = FXMLLoader.load(getClass().getResource("/viewActiveOrders.fxml"));
+        Scene NewCustomerScene = new Scene(NewCustomer);
+
+        //Here we get the stage information
+        Stage window=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(NewCustomerScene);
+        window.show();
+    }
+
+    public void logoutButtonAction(javafx.event.ActionEvent actionEvent) throws IOException{
+        Parent NewCustomer = FXMLLoader.load(getClass().getResource("/welcomePage.fxml"));
+        Scene NewCustomerScene = new Scene(NewCustomer);
+
+        //Here we get the stage information
+        Stage window=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(NewCustomerScene);
+        window.show();
     }
 }

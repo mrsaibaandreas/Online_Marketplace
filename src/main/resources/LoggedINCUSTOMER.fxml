@@ -51,5 +51,14 @@
             </InnerShadow>
          </effect>
       </Button>
+      <Button fx:id="logoutButton" layoutX="516.0" layoutY="295.0" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="30.0" prefWidth="71.0" text=" Logout !">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.11764705926179886" green="0.6980392336845398" blue="0.9882352948188782" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.welcomePageController">
+<AnchorPane prefHeight="336.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.welcomePageController">
    <children>
+      <ImageView fx:id="welcomeIMAGEbackground" fitHeight="349.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@welcomepage-IMAGE.jpg" />
+         </image>
+      </ImageView>
       <Text fx:id="welcomeText" layoutX="110.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to your Online Market Place !">
          <font>
             <Font size="22.0" />
@@ -28,11 +34,17 @@
          <font>
             <Font size="15.0" />
          </font>
+         <effect>
+            <InnerShadow choke="0.05" height="19.4" radius="5.8325" width="5.93" />
+         </effect>
       </Button>
       <Button fx:id="supplierButton1" layoutX="243.0" layoutY="273.0" mnemonicParsing="false" onAction="#supplierButtonAction" prefHeight="31.0" prefWidth="114.0" text="As a supplier">
          <font>
             <Font size="15.0" />
          </font>
+         <effect>
+            <InnerShadow choke="0.05" height="13.55" radius="4.37" width="5.93" />
+         </effect>
       </Button>
    </children>
 </AnchorPane>
