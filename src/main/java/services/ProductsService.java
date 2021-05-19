@@ -55,7 +55,8 @@ public class ProductsService {
     }
 
     public static Product parseJSONObj(JSONObject product) {
-        return new Product(product.get("name").toString(), product.get("description").toString(), product.get("delivery_date").toString(), (User) userService.parseJSONObj((JSONObject) product.get("company")));
+        return new Product(product.get("name").toString(), product.get("description").toString(), (User) userService.parseJSONObj((JSONObject) product.get("company")), (
+        int) product.get("stock"), (Double) product.get("price"));
 
     }
 

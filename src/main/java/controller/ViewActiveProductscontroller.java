@@ -1,16 +1,17 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import javax.swing.text.html.ImageView;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
@@ -29,6 +30,19 @@ public class ViewActiveProductscontroller {
     private TextField textfieldSearch;
 
     @FXML
+    TableView table;
+    @FXML
+    TableColumn name;
+    @FXML
+    TableColumn description;
+    @FXML
+    TableColumn price;
+    @FXML
+    TableColumn stock;
+    @FXML
+    TableColumn supplier;
+
+    @FXML
     void searchButtonAction(ActionEvent event) {
 
     }
@@ -42,6 +56,7 @@ public class ViewActiveProductscontroller {
     void textfieldSearchAction(ActionEvent event) {
 
     }
+
     @FXML
     private Button gobackButton;
 
@@ -50,7 +65,25 @@ public class ViewActiveProductscontroller {
 
     }
 
+
     public void showAllButtonAction(javafx.event.ActionEvent actionEvent) {
+        final ObservableList<Product> data = FXCollections.observableArrayList(
+                new Product("bla","blabla", new User("sa","dsa","user"),2,2.4),
+                new Product("bla","blabla", new User("sa","dsa","user"),2,2.4),
+                new Product("bla","blabla", new User("sa","dsa","user"),2,2.4)
+
+
+        );
+        System.out.println("gasgas");
+        table.getColumns().clear();
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        supplier.setCellValueFactory(new PropertyValueFactory<>("user"));
+        stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        table.setItems(data);
+        table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        table.getColumns().addAll(name,description,supplier,stock,price);
     }
 
     public void searchButtonAction(javafx.event.ActionEvent actionEvent) {
@@ -64,7 +97,7 @@ public class ViewActiveProductscontroller {
         Scene NewCustomerScene = new Scene(NewCustomer);
 
         //Here we get the stage information
-        Stage window=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
         window.setScene(NewCustomerScene);
         window.show();

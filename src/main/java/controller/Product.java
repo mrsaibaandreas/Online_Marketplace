@@ -1,16 +1,40 @@
 package controller;
 
 public class Product {
-    public String name;
-    public String description;
-    public String delivery_Date;
-    public User company;
+    private String name;
+    private String description;
+    private User company;
+    private int stock;
+    private Double price;
 
-    public Product(String name, String description, String delivery_Date, User company) {
+    public Product(String name, String description,User company,int stock, Double price) {
         this.name = name;
-        this.delivery_Date = delivery_Date;
         this.description = description;
         this.company = company;
+        this.stock = stock;
+        this.price = price;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+
+
+    public String getComapany() {
+        return this.company.user_name;
+    }
+    public int getStock()
+    {
+        return this.stock;
+    }
+    public Double getPrice()
+    {
+        return this.price;
     }
 
     public boolean equals(String name) {
