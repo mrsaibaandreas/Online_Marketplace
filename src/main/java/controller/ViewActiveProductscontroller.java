@@ -11,9 +11,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import services.ProductsService;
+import services.SearchService;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.text.ParseException;
 
 public class ViewActiveProductscontroller {
 
@@ -66,14 +69,15 @@ public class ViewActiveProductscontroller {
     }
 
 
-    public void showAllButtonAction(javafx.event.ActionEvent actionEvent) {
-        final ObservableList<Product> data = FXCollections.observableArrayList(
-                new Product("bla","blabla", new User("sa","dsa","user"),2,2.4),
-                new Product("bla","blabla", new User("sa","dsa","user"),2,2.4),
-                new Product("bla","blabla", new User("sa","dsa","user"),2,2.4)
-
-
-        );
+    public void showAllButtonAction(javafx.event.ActionEvent actionEvent) throws IOException, ParseException {
+        ProductsService.loadProductsFromFile();
+//        final ObservableList<Product> data = FXCollections.observableArrayList(
+//                new Product("bla","blabla", new User("sa","dsa","user"),2,2.4),
+//                new Product("bla","blabla", new User("sa","dsa","user"),2,2.4),
+//                new Product("bla","blabla", new User("sa","dsa","user"),2,2.4)
+//
+//
+//        );
         System.out.println("gasgas");
         table.getColumns().clear();
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -81,12 +85,28 @@ public class ViewActiveProductscontroller {
         supplier.setCellValueFactory(new PropertyValueFactory<>("user"));
         stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
-        table.setItems(data);
+        table.setItems(ProductsService.products );
         table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         table.getColumns().addAll(name,description,supplier,stock,price);
     }
 
-    public void searchButtonAction(javafx.event.ActionEvent actionEvent) {
+    public void searchButtonAction(javafx.event.ActionEvent actionEvent) throws IOException, ParseException {
+        SearchService.Search(searchButton.getText().toString());
+        table.getColumns().clear();
+        Parent NewCustomer = FXMLLoader.load(getClass().getResource("/viewActiveProducts.fxml"));
+        Scene NewCustomerScene = new Scene(NewCustomer);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(NewCustomerScene);
+        window.show();
+        table.getColumns().clear();
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        supplier.setCellValueFactory(new PropertyValueFactory<>("user"));
+        stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        table.setItems(SearchService.products );
+        table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        table.getColumns().addAll(name,description,supplier,stock,price);
     }
 
     public void textfieldSearchAction(javafx.event.ActionEvent actionEvent) {

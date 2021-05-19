@@ -81,7 +81,12 @@ public class userService {
                     obj_user.put("user_name", ex_user.user_name);
                     ex_user.password = encodePassword(ex_user.user_name, ex_user.password);
                     obj_user.put("password", ex_user.password);
-                    obj_user.put("f_type", "user");
+                    if(ex_user.getRole().equals("admin"))
+                        obj_user.put("f_type", "admin");
+                    else if(ex_user.getRole().equals("supplier"))
+                        obj_user.put("f_type", "admin");
+                    else
+                        obj_user.put("f_type", "user");
 
 
                     user_list.add(obj_user);

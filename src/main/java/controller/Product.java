@@ -3,11 +3,11 @@ package controller;
 public class Product {
     private String name;
     private String description;
-    private User company;
-    private int stock;
-    private Double price;
+    private String company;
+    private String stock;
+    private String price;
 
-    public Product(String name, String description,User company,int stock, Double price) {
+    public Product(String name, String description,String company,String stock, String price) {
         this.name = name;
         this.description = description;
         this.company = company;
@@ -26,13 +26,13 @@ public class Product {
 
 
     public String getComapany() {
-        return this.company.user_name;
+        return this.company;
     }
-    public int getStock()
+    public String getStock()
     {
         return this.stock;
     }
-    public Double getPrice()
+    public String getPrice()
     {
         return this.price;
     }
