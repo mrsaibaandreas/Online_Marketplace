@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="337.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GiveAccountPagecontroller">
    <children>
       <ImageView fx:id="imagebackgroundAccount" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
@@ -16,7 +15,7 @@
             <Image url="@welcomepage-IMAGE.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="giveAccountButton" layoutX="300.0" layoutY="129.0" mnemonicParsing="false" onAction="#giveAccountButtonAction" text="Give Account to Supplier !">
+      <Button fx:id="giveAccountButton" layoutX="300.0" layoutY="142.0" mnemonicParsing="false" onAction="#giveAccountButtonAction" text="Give Account to Supplier !">
          <font>
             <Font size="15.0" />
          </font>
@@ -25,5 +24,10 @@
       <TextField fx:id="supplierUsernameField" layoutX="58.0" layoutY="169.0" onAction="#supplierUsernameFieldAction" promptText="Supplier username" />
       <PasswordField fx:id="AdminpasswordField" layoutX="58.0" layoutY="132.0" onAction="#AdminpasswordFieldAction" promptText="Admin password" />
       <Button fx:id="backButton" layoutX="534.0" layoutY="298.0" mnemonicParsing="false" onAction="#backButtonAction" text="Back" />
+      <ImageView fx:id="imageLogo" fitHeight="150.0" fitWidth="200.0" layoutX="322.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@OM-Image.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

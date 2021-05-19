@@ -58,6 +58,7 @@ public class GiveAccountPagecontroller {
 
         }
 
+
     public void giveAccountButtonAction(javafx.event.ActionEvent actionEvent) {
     }
 

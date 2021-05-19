@@ -7,6 +7,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="574.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
     <children>
@@ -20,11 +22,16 @@
         <Label fx:id="usernameText" layoutX="119.0" layoutY="157.0" prefHeight="16.0" prefWidth="77.0" text="  Username" />
         <Label fx:id="passwordText" layoutX="125.0" layoutY="193.0" text="Password" />
         <Button fx:id="loginButton" layoutX="256.0" layoutY="231.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="29.0" prefWidth="62.0" text="Login" />
-        <ImageView fx:id="imageCenter" fitHeight="150.0" fitWidth="200.0" layoutX="212.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="imageCenter" fitHeight="150.0" fitWidth="200.0" layoutX="212.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@OM-Image.png" />
             </image>
         </ImageView>
       <Button fx:id="backButton" layoutX="491.0" layoutY="279.0" mnemonicParsing="false" onAction="#backButtonAction" text="Go back !" />
+        <Text fx:id="logincustomerText" layoutX="236.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login as customer :">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Text>
     </children>
 </Pane>
