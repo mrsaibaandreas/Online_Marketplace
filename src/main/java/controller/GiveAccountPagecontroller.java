@@ -9,6 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import services.ProductsService;
+import services.userService;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -59,7 +61,9 @@ public class GiveAccountPagecontroller {
         }
 
 
-    public void giveAccountButtonAction(javafx.event.ActionEvent actionEvent) {
+    public void giveAccountButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
+        userService.createSupplier(supplierUsernameField.getText().toString(),adminUsernameField.getText().toString(), AdminpasswordField.getText().toString());
+
     }
 
     public void adminUsernameFieldAction(javafx.event.ActionEvent actionEvent) {

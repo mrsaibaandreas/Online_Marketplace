@@ -76,16 +76,19 @@ public class LoginSupplierController {
         }
 
         public void loginButtonAction(javafx.event.ActionEvent actionEvent) throws IOException{
-            // !--------------------------   MODIFICA ANDREAS   --------------------------!  // pt login cu cont de la admin pt supplier
+                if(userService.LoginSupplier(writeUsername.getText().toString(), writePassword.getText().toString())) {
 
-                Parent NewCustomer = FXMLLoader.load(getClass().getResource("/LoggedINSUPPLIER.fxml"));
-                Scene NewCustomerScene = new Scene(NewCustomer);
+                        Parent NewCustomer = FXMLLoader.load(getClass().getResource("/LoggedINSUPPLIER.fxml"));
+                        Scene NewCustomerScene = new Scene(NewCustomer);
 
-                //Here we get the stage information
-                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                        //Here we get the stage information
+                        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-                window.setScene(NewCustomerScene);
-                window.show();
+                        window.setScene(NewCustomerScene);
+                        window.show();
+                }
+                else
+                        System.out.println("Wrong data");
             }
 }
 

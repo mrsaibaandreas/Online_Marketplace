@@ -31,7 +31,7 @@ public class ProductsService {
         } else {
             JSONParser parser = new JSONParser();
 
-            try (FileReader reader = new FileReader("src/main/resources/users.json")) {
+            try (FileReader reader = new FileReader("src/main/resources/products.json")) {
                 //Read JSON file
                 Object obj = parser.parse(reader);
 
