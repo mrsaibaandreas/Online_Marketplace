@@ -36,29 +36,31 @@ public class RegisterController {
     @FXML
     public boolean handleClick(ActionEvent event) throws IOException {
 
-    try{
-        User test = new User(user_name.getText(),pass1.getText(),"user");
-        userService.loadUsersFromFile();
-        System.out.println("test"+test);
-        return userService.addNewUser(new User(user_name.getText(), pass1.getText(), "user"));
+        try {
+            User test = new User(user_name.getText(), pass1.getText(), "user");
+            userService.loadUsersFromFile();
+            System.out.println("test" + test);
+            return userService.addNewUser(new User(user_name.getText(), pass1.getText(), "user"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
-    catch(Exception e)
-    {
-        e.printStackTrace();
-        return false;
+
+        @FXML
+        private Button goBackButton;
+
+
+
+        @FXML
+        public void goBackButtonAction(ActionEvent actionEvent) throws IOException{
+            Parent NewCustomer = FXMLLoader.load(getClass().getResource("/customerPage.fxml"));
+            Scene NewCustomerScene = new Scene(NewCustomer);
+
+            //Here we get the stage information
+            Stage window=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+            window.setScene(NewCustomerScene);
+            window.show();
+        }
     }
-
-
-
-    @FXML
-    public void goBackButtonAction(ActionEvent actionEvent) throws IOException{
-        Parent NewCustomer = FXMLLoader.load(getClass().getResource("/customerPage.fxml"));
-        Scene NewCustomerScene = new Scene(NewCustomer);
-
-        //Here we get the stage information
-        Stage window=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(NewCustomerScene);
-        window.show();
-    }
-}
