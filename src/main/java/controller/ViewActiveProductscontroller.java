@@ -46,6 +46,9 @@ public class ViewActiveProductscontroller {
     TableColumn supplier;
 
     @FXML
+    private Button buyButton;
+
+    @FXML
     void searchButtonAction(ActionEvent event) {
 
     }
@@ -121,5 +124,8 @@ public class ViewActiveProductscontroller {
 
         window.setScene(NewCustomerScene);
         window.show();
+    }
+
+    public void buyButtonAction(javafx.event.ActionEvent actionEvent) {
     }
 }

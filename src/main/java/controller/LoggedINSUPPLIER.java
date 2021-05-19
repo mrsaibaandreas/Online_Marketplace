@@ -59,9 +59,25 @@ public class LoggedINSUPPLIER {
         window.show();
     }
 
-    public void viewActiveOrdersButtonAction(javafx.event.ActionEvent actionEvent) {
+    public void viewActiveOrdersButtonAction(javafx.event.ActionEvent actionEvent) throws IOException{
+        Parent NewCustomer = FXMLLoader.load(getClass().getResource("/activeOrdersSupplier.fxml"));
+        Scene NewCustomerScene = new Scene(NewCustomer);
+
+        //Here we get the stage information
+        Stage window=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(NewCustomerScene);
+        window.show();
     }
 
-    public void addItemButtonAction(javafx.event.ActionEvent actionEvent) {
+    public void addItemButtonAction(javafx.event.ActionEvent actionEvent) throws IOException{
+        Parent NewCustomer = FXMLLoader.load(getClass().getResource("/addItemSupplier.fxml"));
+        Scene NewCustomerScene = new Scene(NewCustomer);
+
+        //Here we get the stage information
+        Stage window=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(NewCustomerScene);
+        window.show();
     }
 }

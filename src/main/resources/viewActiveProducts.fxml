@@ -23,7 +23,7 @@
                <children>
                   <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                      <TableColumn fx:id="name"  prefWidth="75.0" text="Name" />
+                      <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
                       <TableColumn fx:id="description" prefWidth="191.0" text="Description" />
                         <TableColumn fx:id="price" prefWidth="55.0" text="Price" />
                         <TableColumn fx:id="stock" prefWidth="69.0" text="Stock" />
@@ -37,6 +37,6 @@
       <Button fx:id="searchButton" layoutX="496.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchButtonAction" text="Search" />
       <TextField fx:id="textfieldSearch" layoutX="315.0" layoutY="14.0" onAction="#textfieldSearchAction" promptText="Search for products..." />
       <Button fx:id="gobackButton" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#gobackButtonAction" text="Go back !" />
+      <Button fx:id="buyButton" layoutX="516.0" layoutY="361.0" mnemonicParsing="false" onAction="#buyButtonAction" text="Buy !" />
    </children>
 </AnchorPane>
-
