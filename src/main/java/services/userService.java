@@ -49,7 +49,6 @@ public class userService {
 
 
                 user_list.forEach(emp -> {
-                    System.out.println(emp);
 
                     users.add(parseJSONObj((JSONObject) emp));
                 });
@@ -81,9 +80,9 @@ public class userService {
                     obj_user.put("user_name", ex_user.user_name);
                     ex_user.password = encodePassword(ex_user.user_name, ex_user.password);
                     obj_user.put("password", ex_user.password);
-                    if(ex_user.getRole().equals("admin"))
+                    if (ex_user.getRole().equals("admin"))
                         obj_user.put("f_type", "admin");
-                    else if(ex_user.getRole().equals("supplier"))
+                    else if (ex_user.getRole().equals("supplier"))
                         obj_user.put("f_type", "admin");
                     else
                         obj_user.put("f_type", "user");
@@ -138,8 +137,6 @@ public class userService {
         pass = encodePassword(user_name, pass);
         System.out.println(user.password);
         if (pass.equals(user.password)) {
-            System.out.println();
-            System.out.println("yee");
             return true;
         }
 
@@ -165,8 +162,8 @@ public class userService {
         return false;
 
     }
-    public static boolean LoginSupplier(String user_name, String password)
-    {
+
+    public static boolean LoginSupplier(String user_name, String password) {
         if (checkUserExistence(user_name)) {
             System.out.println("User does not exists");
             return false;
@@ -189,15 +186,12 @@ public class userService {
     }
 
     public static boolean createSupplier(String user_name, String user_name_adm, String password) throws IOException {
-        System.out.println(user_name_adm + " " +  password);
+        System.out.println(user_name_adm + " " + password);
         if (Login(user_name_adm, password)) {
             for (User user : users) {
-                System.out.println(user_name_adm+"   "+user.user_name);
+                System.out.println(user_name_adm + "   " + user.user_name);
                 if (user_name_adm.equals(user.user_name)) {
-
-                    System.out.println("rala");
                     if (user.getRole().equals("admin")) {
-                        System.out.println("merge");
                         addNewUser(new User(user_name, user_name, "supplier"));
                         return true;
                     } else return false;

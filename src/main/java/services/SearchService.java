@@ -8,7 +8,6 @@ import javafx.collections.ObservableList;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.text.ParseException;
-import java.util.ArrayList;
 
 public class SearchService {
 
@@ -27,13 +26,13 @@ public class SearchService {
                 result.add(product);
                 check++;
             }
+            products = result;
         }
         ;
         if (check == 0) {
             result = null;
             return null;
         }
-        products = result;
         return result;
 
 
