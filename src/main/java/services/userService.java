@@ -67,7 +67,7 @@ public class userService {
 
 
     public static boolean addNewUser(User user) throws IOException {
-        if (checkUserExistence(user.user_name))
+        if (checkUserExistence(user.getName()))
             users.add(user);
         else {
             System.out.println("User already exists");
@@ -78,8 +78,8 @@ public class userService {
                     JSONObject obj_user = new JSONObject();
 
                     obj_user.put("user_name", ex_user.user_name);
-                    ex_user.password = encodePassword(ex_user.user_name, ex_user.password);
-                    obj_user.put("password", ex_user.password);
+                    ex_user.setPassword(encodePassword(ex_user.user_name, ex_user.getPassword()));
+                    obj_user.put("password", ex_user.getPassword());
                     if (ex_user.getRole().equals("admin"))
                         obj_user.put("f_type", "admin");
                     else if (ex_user.getRole().equals("supplier"))
@@ -135,8 +135,7 @@ public class userService {
     private static boolean checkPass(User user, String user_name, String pass) {
 
         pass = encodePassword(user_name, pass);
-        System.out.println(user.password);
-        if (pass.equals(user.password)) {
+        if (pass.equals(user.getPassword())) {
             return true;
         }
 
@@ -169,7 +168,7 @@ public class userService {
             return false;
         }
         for (User user : users) {
-            if (user.getRole().equals("supplier")) {
+            if (user.getRole().equals("admin")) {
                 if (user.user_name.equals(user_name)) {
                     if (checkPass(user, user_name, password)) {
                         System.out.println("Log user");

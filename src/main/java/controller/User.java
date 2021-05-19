@@ -2,7 +2,7 @@ package controller;
 
 public class User {
     public String user_name;
-    public String password = null;
+    private String password = null;
     private String f_type = "user"; //checks is user or supplier //by default is an user
 
     public User(String user_name, String password, String f_type) {
@@ -27,7 +27,14 @@ public class User {
     {
         return this.f_type;
     }
-
+    public String getName()
+    {
+        return this.user_name;
+    }
+    public String getPassword()
+    {
+        return this.password;
+    }
 
     @Override
     public boolean equals(Object user) {

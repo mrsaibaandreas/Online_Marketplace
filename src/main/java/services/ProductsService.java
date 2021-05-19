@@ -38,13 +38,13 @@ public class ProductsService {
                 //Read JSON file
                 Object obj = parser.parse(reader);
 
-                JSONArray user_list = (JSONArray) obj;
-                System.out.println(user_list);
+                JSONArray prod_list = (JSONArray) obj;
+                System.out.println(prod_list);
 
                 //Iterate over employee array
 
 
-                user_list.forEach(prod -> {
+                prod_list.forEach(prod -> {
                     System.out.println(prod);
 
                     products.add(parseJSONObj((JSONObject) prod));
@@ -65,7 +65,7 @@ public class ProductsService {
 
     public static boolean addItem(Product product) {
 
-        JSONArray user_list = new JSONArray();
+        JSONArray prod_list = new JSONArray();
         products.add(product);
         products.forEach(ex_prod -> {
                     JSONObject obj_prod = new JSONObject();
@@ -77,12 +77,12 @@ public class ProductsService {
                     obj_prod.put("company", ex_prod.getComapany());
 
 
-                    user_list.add(obj_prod);
+                    prod_list.add(obj_prod);
                 }
         );
         try (FileWriter file = new FileWriter("src/main/resources/users.json")) {
             //We can write any JSONArray or JSONObject instance to the file
-            file.write(user_list.toJSONString());
+            file.write(prod_list.toJSONString());
             file.flush();
             return true;
 
@@ -90,6 +90,41 @@ public class ProductsService {
             e.printStackTrace();
             return false;
         }
+    }
+    public static boolean deleteItem(String name)
+    {
+        JSONArray prod_list = new JSONArray();
+        for(Product product: products)
+        {
+            if(product.getName().equals(name))
+            {
+                products.remove(product);
+            }
+            products.forEach(ex_prod -> {
+                        JSONObject obj_prod = new JSONObject();
+
+                        obj_prod.put("name", ex_prod.getName());
+                        obj_prod.put("description", ex_prod.getDescription());
+                        obj_prod.put("price", ex_prod.getPrice());
+                        obj_prod.put("stock", ex_prod.getStock());
+                        obj_prod.put("company", ex_prod.getComapany());
+
+
+                        prod_list.add(obj_prod);
+                    }
+            );
+            try (FileWriter file = new FileWriter("src/main/resources/users.json")) {
+                //We can write any JSONArray or JSONObject instance to the file
+                file.write(prod_list.toJSONString());
+                file.flush();
+                return true;
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        return false;
     }
 }
 

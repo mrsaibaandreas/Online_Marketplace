@@ -19,12 +19,17 @@ public class AddItemSuppliercontroller {
 
         @FXML
         private Button gobackButton;
+        @FXML
+        private Button add;
+        @FXML
+        void add(ActionEvent event){
 
+        }
         @FXML
         void gobackButtonAction(ActionEvent event) {
 
         }
-
+        
     public void gobackButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent NewCustomer = FXMLLoader.load(getClass().getResource("/LoggedINSUPPLIER.fxml"));
         Scene NewCustomerScene = new Scene(NewCustomer);
