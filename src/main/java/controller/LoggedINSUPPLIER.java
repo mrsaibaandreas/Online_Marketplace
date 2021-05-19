@@ -26,13 +26,26 @@ public class LoggedINSUPPLIER {
         void logOutButtonAction(ActionEvent event) {
 
         }
+    @FXML
+    private Button viewActiveOrdersButton;
+
+    @FXML
+    private Button addItemButton;
 
         @FXML
         void viewItemsListedButtonAction(ActionEvent event) {
 
         }
 
-    public void viewItemsListedButtonAction(javafx.event.ActionEvent actionEvent) {
+    public void viewItemsListedButtonAction(javafx.event.ActionEvent actionEvent) throws IOException{
+        Parent NewCustomer = FXMLLoader.load(getClass().getResource("/viewItemsListed.fxml"));
+        Scene NewCustomerScene = new Scene(NewCustomer);
+
+        //Here we get the stage information
+        Stage window=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(NewCustomerScene);
+        window.show();
     }
 
     public void logOutButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
@@ -44,5 +57,11 @@ public class LoggedINSUPPLIER {
 
         window.setScene(NewCustomerScene);
         window.show();
+    }
+
+    public void viewActiveOrdersButtonAction(javafx.event.ActionEvent actionEvent) {
+    }
+
+    public void addItemButtonAction(javafx.event.ActionEvent actionEvent) {
     }
 }
