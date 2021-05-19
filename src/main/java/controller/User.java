@@ -23,6 +23,11 @@ public class User {
         this.f_type = f_type;
     }
 
+    public String getRole()
+    {
+        return this.f_type;
+    }
+
 
     @Override
     public boolean equals(Object user) {

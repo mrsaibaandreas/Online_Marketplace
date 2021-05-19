@@ -79,7 +79,6 @@ public class userService {
                     JSONObject obj_user = new JSONObject();
 
                     obj_user.put("user_name", ex_user.user_name);
-                    System.out.println("DATA\n" + ex_user.user_name +"\n" +ex_user.password + "\n");
                     ex_user.password = encodePassword(ex_user.user_name, ex_user.password);
                     obj_user.put("password", ex_user.password);
                     obj_user.put("f_type", "user");
@@ -116,7 +115,7 @@ public class userService {
 
         // This is the way a password should be encoded when checking the credentials
         return new String(hashedPassword, StandardCharsets.UTF_8)
-                 .replace("\"", ""); //to be able to save in JSON format
+                .replace("\"", ""); //to be able to save in JSON format
     }
 
     private static MessageDigest getMessageDigest() {
@@ -133,13 +132,13 @@ public class userService {
 
         pass = encodePassword(user_name, pass);
         System.out.println(user.password);
-        if(pass.equals(user.password)) {
+        if (pass.equals(user.password)) {
             System.out.println();
             System.out.println("yee");
             return true;
         }
 
-            return false;
+        return false;
     }
 
     public static boolean Login(String user_name, String password) {
@@ -158,6 +157,25 @@ public class userService {
                 }
             }
         }
+        return false;
+
+    }
+
+    public static boolean createSupplier(String user_name, String user_name_adm, String password) throws IOException {
+
+        if (Login(user_name_adm, password)) {
+            for (User user : users) {
+                if (user_name_adm.equals(user.user_name)) {
+                    if (user.getRole().equals("admin")) {
+                        addNewUser(new User(user_name, user_name, "user"));
+                        return true;
+                    } else return false;
+
+                } else return false;
+            }
+
+        }
+
         return false;
 
     }
