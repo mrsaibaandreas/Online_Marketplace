@@ -57,4 +57,15 @@ public class supplierPageController {
         window.setScene(NewCustomerScene);
         window.show();
     }
+
+    public void registerButtonSupplierAction(javafx.event.ActionEvent actionEvent) throws IOException{
+        Parent NewCustomer = FXMLLoader.load(getClass().getResource("/giveAccountPage.fxml"));
+        Scene NewCustomerScene = new Scene(NewCustomer);
+
+        //Here we get the stage information
+        Stage window=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(NewCustomerScene);
+        window.show();
+    }
 }
