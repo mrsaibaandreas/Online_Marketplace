@@ -37,7 +37,7 @@ public class supplierPageController {
     }
 
     public void loginButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent NewCustomer = FXMLLoader.load(getClass().getResource("/login.fxml"));
+        Parent NewCustomer = FXMLLoader.load(getClass().getResource("/loginSupplier.fxml"));
         Scene NewCustomerScene = new Scene(NewCustomer);
 
         //Here we get the stage information
